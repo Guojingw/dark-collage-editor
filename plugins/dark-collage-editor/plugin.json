@@ -1,0 +1,6 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dark-collage-editor",
+  "version": "0.2.0",
+  "description": "A source-faithful dark collage photo editing workflow with controlled red-black-white grunge, custom text, and batch-series consistency."
+}
