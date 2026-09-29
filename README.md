@@ -1,78 +1,60 @@
 # Dark Collage Editor
 
-A no-prompt-writing, source-faithful dark collage portrait workflow for ChatGPT/Codex plugins.
+A no-code ChatGPT Project workflow for turning portrait photos into a dark red / black / off-white collage, graffiti, zine, punk, or goth editorial style.
 
-**Goal:** let a user upload portrait photos, choose a simple intensity level, optionally provide exact text, and get a coherent dark red / black / off-white grunge collage series without turning the canvas into repeated AI-generated faces.
+The project is designed for people who do **not** want to install a Skill, use Codex CLI, write prompts, or run code.
 
-## What it does
+## What users do
 
-- Preserves the uploaded subject as the visual anchor.
-- Keeps the original image orientation unless the user asks to change it.
-- Uses black / deep red / off-white, torn paper, xerox grain, halftone, scratches, tape, chains and graffiti.
-- Uses 0–2 supporting portrait fragments by default.
-- Requires portrait fragments to come from the user's uploaded photos; if true source reuse is not available, it should omit them rather than synthesize a look-alike.
-- Supports exact user-supplied text or no text.
-- Supports batch / series editing with a consistent visual language but varied composition.
+1. Open a ChatGPT Project configured with this repository's instructions.
+2. Upload one or more portrait photos.
+3. Say something simple such as:
 
-## For normal users
+> Editorial. No text. Keep my face, pose, clothing and original orientation.
 
-Typical requests:
+or:
 
-> Edit these photos with Dark Collage Editor. Editorial. Text: STAY IN THE NOISE.
+> Editorial. Text: STAY IN THE NOISE. Make these 8 photos one consistent series, but vary each layout.
 
-> 把这 9 张修成一组暗黑拼贴涂鸦风，Editorial，不要文字。
+## Core design principle
 
-The skill asks only for missing essentials; users do not need prompt-engineering syntax.
+The original portrait remains the hero. Collage complexity should come mostly from torn paper, paint, typography, scratches, tape, halftone, grain and graffiti — not from filling the canvas with repeated copies of the person's face.
 
-## Repository layout
+## Start here
 
-```text
-.agents/plugins/marketplace.json
-plugins/
-  dark-collage-editor/
-    plugin.json
-    skills/
-      dark-collage-editor/
-        SKILL.md
-        presets/
-        references/
-        examples/
-```
+Read **[START_HERE.md](START_HERE.md)**.
 
-## Test locally from this GitHub repository
+To make your own no-code ChatGPT Project, you only need:
 
-Current OpenAI plugin authoring docs support Git-backed/local marketplaces in the ChatGPT desktop app and Codex.
+- **[PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)** → paste into Project Instructions
+- **[STYLE_GUIDE.md](STYLE_GUIDE.md)** → upload as a Project file
+- **3–6 reference images you are allowed to use publicly or privately** → optional but recommended
 
-1. Install/open the ChatGPT desktop app and make sure Plugins are available on your account.
-2. Add this repository as a plugin marketplace:
+Then use **[TEST_CASES.md](TEST_CASES.md)** for a first smoke test.
 
-```bash
-codex plugin marketplace add Guojingw/dark-collage-editor
-```
-
-3. Restart the ChatGPT desktop app.
-4. Open **Plugins** and choose the `Guojingw Creative Plugins` marketplace/source.
-5. Install **Dark Collage Editor**.
-6. Start a new chat, upload a portrait, and try:
-
-> Use Dark Collage Editor. Editorial. No text. Preserve my face and pose.
-
-Availability varies by ChatGPT plan, surface, and rollout. Personal raw Skills are generally limited to eligible Business / Enterprise / Healthcare / Edu accounts; plugins have broader availability, so this repository is packaged as a skills-only plugin for testing/distribution.
-
-## Direct Skill upload
-
-If your ChatGPT workspace has personal Skills upload enabled, upload the folder at:
+## Repository structure
 
 ```text
-plugins/dark-collage-editor/skills/dark-collage-editor/
+dark-collage-editor/
+├── README.md
+├── START_HERE.md
+├── PROJECT_INSTRUCTIONS.md
+├── STYLE_GUIDE.md
+├── TEST_CASES.md
+├── CHANGELOG.md
+├── LICENSE
+└── examples/
+    └── README.md
 ```
 
-or zip that single top-level skill folder.
+The earlier Skill / Plugin prototype remains available in Git history. The current main branch is intentionally Project-first and no-code.
 
 ## Status
 
-v0.2.0 — instruction-first prototype. The next substantial milestone is a deterministic source-crop/compositing engine so face/eye/hand collage fragments can be guaranteed pixel-for-pixel to originate from the uploaded source rather than relying only on model compliance.
+Current direction: **Project-first beta**.
+
+The workflow is instruction-based. It strongly requests source-faithful portrait preservation, but exact pixel-level reuse of face/eye/hand fragments is not yet enforced by a deterministic crop engine.
 
 ## License
 
-MIT. See `LICENSE`.
+MIT.
