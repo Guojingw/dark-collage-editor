@@ -1,120 +1,144 @@
 ---
 name: dark-collage-editor
-description: "Transform user-supplied portrait photos into dark collage / punk / goth / emo / zine editorial artwork while strictly preserving the original person. Use when the user wants black / deep-red / dirty-white torn-paper collage, xerox texture, graffiti, distressed typography, or a coherent portrait series. Preserve identity, pose, hands, clothes, jewelry, camera angle, and original orientation; rebuild the surrounding design rather than merely adding a border."
+description: "Transform user-supplied portrait photos into dark collage / punk / goth / emo / zine editorial artwork while strictly preserving the target person. Use for black / oxblood / dirty-white torn-paper collage, xerox/halftone texture, distressed type, graffiti, and coherent multi-photo portrait series. Treat style references as style-only and never borrow their people, faces, clothes, or body parts."
 ---
 
-# Dark Collage Editor v2
+# Dark Collage Editor v3
 
 Create a finished dark editorial collage from the user's own portrait photo(s).
 
-The signature is:
+Core signature:
 
-**人物真实保留 + 背景重新设计 + 黑/深红/脏白大结构 + 撕纸/复印/zine 材质 + 克制的人像碎片。**
+**strict portrait fidelity + source-aware recomposition + black / oxblood / dirty-white macro structure + torn-paper / xerox / zine material + sparse source-authentic fragments.**
 
-The result should feel like the original person was art-directed into a punk / goth / zine editorial page, not like a new AI person and not like the original photo with a decorative border.
+The result should look like the user's real photograph was art-directed into a punk / goth / zine editorial page. It must not look like a newly generated look-alike, a filter pass, or a decorated border.
 
-## 1. Non-negotiable identity lock
+## 1. Input roles come first
 
-Unless the user explicitly asks otherwise, preserve:
+Before editing, classify every supplied image into one role:
 
-- identity and face
-- facial proportions and defining features
-- hairstyle
+- **TARGET** — the photo being edited. Identity, pose, clothes, hands, jewelry, camera angle, and orientation come from this image.
+- **STYLE_REFERENCE** — used only for palette, density, torn-paper scale, typography energy, texture, visual hierarchy, and composition language.
+- **SERIES_REFERENCE** — a previous finished output used only to keep the current batch visually consistent.
+
+Never treat a STYLE_REFERENCE as a donor image.
+
+Do not borrow from a STYLE_REFERENCE:
+- face
+- eye
+- mouth
+- hand
+- hair
+- clothes
+- jewelry
+- body
+- pose
+- portrait fragment
+
+If the user says “1–3 are references” or equivalent, infer those roles directly and do not ask again.
+
+For batch editing, each output should use its own TARGET image as the portrait source by default.
+
+## 2. Non-negotiable portrait lock
+
+Unless the user explicitly requests a change, preserve from the TARGET:
+
+- identity
+- face shape and facial proportions
+- defining eyes, nose, mouth, brows, and skin structure
+- hairstyle and hairline
 - expression
 - body pose
-- hand pose
+- hand pose and finger count
 - clothing
 - accessories and jewelry
-- camera angle
+- camera angle and perspective
 - original horizontal / vertical orientation
 
-Do **not** beautify, reconstruct, replace, restyle, or redesign the main face merely to fit the aesthetic.
+Do not beautify, reconstruct, replace, restyle, or “improve” the main face to fit the aesthetic.
 
-Do **not** invent new hands, extra limbs, new jewelry, different clothes, or a new hairstyle.
+Do not invent new hands, limbs, jewelry, clothes, hairstyle, tattoos, piercings, or makeup details.
 
-The source portrait is factual. The surrounding graphic design is flexible.
+The portrait is factual. The surrounding design is flexible.
 
-## 2. Use image editing, not filter simulation
+## 3. Use image editing, not procedural imitation
 
-When image editing / generation is available, use it directly on the supplied photo.
+When image editing / generation is available, use it directly on the TARGET image.
 
-Do not simulate the finished dark collage with Python, PIL, simple filters, border overlays, or a procedural texture pass.
+Do not use Python, PIL, simple filters, procedural borders, or texture overlays as the final creative method.
 
-Those tools may be used only for measurement, inspection, contact sheets, or non-creative utility work. They are not a substitute for the actual edit.
+Utility code may be used only for inspection, measurements, contact sheets, or file handling.
 
-A result that is only:
-
+These are automatic failures:
 - source photo + border
 - source photo + grain
 - source photo + red scratches
-- source photo + dark vignette
+- source photo + vignette
+- source photo + a few decorative stickers
 
-is a failure.
+The design must materially recompose the image.
 
-## 3. Default behavior
+## 4. Read the target before designing
 
-If the user simply asks for dark collage style, use:
+Build an internal **Portrait Design Card** for each TARGET:
 
-- Preset: **Editorial**
-- Readable text: **None**
-- Identity preservation: **Strict**
-- Orientation: **Preserve**
-- Portrait fragments: **0–1 by default**
-- Batch mode: **Consistent series, varied layouts**
+- **Hero region** — where the person sits and their visual weight.
+- **Identity-critical zones** — face, hands, hairline, jewelry, distinctive clothing.
+- **Pose vector** — body, arm, gaze, and dominant directional gesture.
+- **Background freedom** — which source areas may be removed, obscured, or retained.
+- **Negative-space zones** — safe regions for type, torn paper, halftone, paint, or large fields.
+- **Cutout potential** — full subject cutout, partial separation, or photo-field retention.
+- **Pressure point** — one place where the strongest graphic collision should occur.
+- **Fragment candidate** — eye / half-face / hand / profile / none.
+- **Native color anchors** — source colors worth preserving.
+- **Series role** — if part of a batch, what makes this page different from the others.
 
-Do not force the user to write a technical prompt.
+Do not show this internal card unless the user asks.
 
-Ask at most these only when genuinely missing:
+## 5. Extract a Style Vector from references
 
-1. Clean / Editorial / Chaotic?
-2. Exact text, or no readable text?
-3. For multiple photos: consistent series or stronger variation?
+When STYLE_REFERENCE images are supplied, extract only:
 
-If these are already clear, edit immediately.
+- black / red / off-white balance
+- collage density
+- dominant tear scale and direction
+- amount of source-background replacement
+- xerox / halftone intensity
+- typography scale and aggression
+- red gesture behavior
+- paper / print material
+- amount of negative space
+- subject-to-graphics relationship
 
-## 4. Read the portrait before designing
+Then adapt that language to the TARGET geometry.
 
-Before generating, build an internal **Portrait Design Card**.
+Do not copy a reference layout literally.
 
-Resolve:
+Aim for:
 
-- **Hero subject:** where the person is and how much visual weight they carry.
-- **Identity-critical zones:** face, hands, hairstyle, jewelry, distinctive clothing details.
-- **Pose vector:** dominant body / arm / gaze direction.
-- **Background freedom:** which source background areas can be removed, covered, or retained.
-- **Negative-space zones:** safe areas for typography, torn paper, halftone, paint, or graphic fields.
-- **Cutout potential:** full subject cutout, partial separation, or photo-field retention.
-- **Source fragment candidate:** eye / half-face / hand / profile / none.
-- **Graphic pressure point:** the one area where the main collage collision should occur.
-- **Native color:** meaningful source colors worth preserving in skin, clothes, or jewelry.
-- **Batch role:** if multiple photos, what visual role this image should play in the series.
+**same visual language, source-specific composition.**
 
-Do not show this analysis unless the user asks.
+## 6. Decision priority
 
-## 5. Decision priority
+Resolve conflicts in this order:
 
-When rules conflict, resolve them in this order:
-
-1. Preserve the actual person.
+1. Preserve the real TARGET person.
 2. Preserve pose, hands, clothes, jewelry, angle, and orientation.
-3. Keep the person as the first visual read.
-4. Make the composition materially different from the source photograph.
-5. Use one clear macro composition instead of random decoration.
-6. Use source-derived portrait fragments only when useful.
-7. Keep black / deep red / dirty white coherent.
-8. Add texture only after the macro design works.
-9. Preserve readable text exactly when the user supplies it.
-10. Keep batch outputs related without template duplication.
+3. Prevent contamination from STYLE_REFERENCE people.
+4. Keep the person as the first visual read.
+5. Make the composition materially different from the source photo.
+6. Choose one clear macro composition from the TARGET geometry.
+7. Use source-authentic portrait fragments only when needed.
+8. Match the reference Style Vector.
+9. Add meso and micro texture only after macro structure works.
+10. Preserve exact user-supplied text.
+11. Keep a batch coherent without template repetition.
 
-## 6. Choose one composition family
+## 7. Choose one primary composition family
 
-Read `references/composition-families.md`.
+Read references/composition-families.md.
 
-For every image, choose **one primary composition family** based on the source portrait.
-
-Do not mix all families together.
-
-The main families are:
+Choose exactly one primary family per output:
 
 - A — Hero Cutout
 - B — Split Photography
@@ -123,273 +147,249 @@ The main families are:
 - E — Graphic Negative Space
 - F — Tight Crop Poster
 
-The composition family should come from the portrait geometry, not from habit.
+One optional secondary device may support it, but do not merge several families equally.
 
-For a batch, distribute families intentionally so adjacent outputs do not feel copy-pasted.
+Select the family from:
+- portrait scale
+- pose direction
+- negative space
+- background usefulness
+- orientation
+- reference Style Vector
 
-## 7. Build with three visual scales
+For a batch, vary the family and macro geometry intentionally.
 
-Do not use a checklist that forces every possible punk element into every image.
+## 8. Structure budget: Macro → Meso → Micro
 
-### Macro layer — choose 1–2
-Large structural moves:
+Do not force a long checklist of punk elements into every image.
 
+### Macro — 1 dominant + at most 1 counterweight
+Use large structural moves:
 - black field
 - dirty-white torn field
-- deep-red structural shape
+- oxblood / deep-red structural shape
 - oversized cropped typography
 - major diagonal / vertical tear
-- large photocopy / halftone block
+- large xerox / halftone block
 
-### Meso layer — choose 2–3
-Supporting design moves:
-
-- one source-photo portrait fragment
+### Meso — usually 2
+Use supporting moves:
+- one same-target portrait fragment
 - tape
-- red dry-brush stroke
+- red dry-brush gesture
 - xerox patch
-- chain / cross / safety-pin-like hardware motif
+- chain / cross / safety-pin-like hardware
 - medium halftone patch
 - torn-paper overlap
 - one graphic label
 
-### Micro layer — choose 2–4
-Surface detail:
-
+### Micro — usually 2–4
+Use surface detail:
 - scratches
-- grain
-- paper fibers
+- paper grain / fibers
 - tiny X / star / heart / arrow
 - ink speckle
-- faint pencil / chalk marks
-- minor misregistration
+- pencil / chalk residue
+- small misregistration
 - distressed print residue
 
-Macro structure must work before meso and micro detail are added.
+If the image looks weak, strengthen Macro first.  
+If it looks messy, remove Micro first.
 
-## 8. Palette and material system
+## 9. Preset intensity
 
-Read `references/style-guide.md`.
+### Clean
+- portrait attention: about 80–90%
+- background transformation: light
+- 1 macro move
+- 1–2 meso moves
+- sparse micro texture
+- 0–1 portrait fragment
+- generous negative space
 
-Default graphic palette:
+### Editorial — default
+- portrait attention: about 70–85%
+- background transformation: clearly visible
+- 1 dominant macro + optional counterweight
+- about 2 meso moves
+- controlled print texture
+- 0–2 fragments, usually 0–1
+- asymmetric zine hierarchy
 
-- black / charcoal: dominant
-- deep red / oxblood / dark wine: accent
-- dirty white / off-white / photocopy gray: contrast
-- natural skin and meaningful garment / jewelry colors: preserved where useful
+### Chaotic
+- portrait attention: about 60–80%
+- background transformation: strong
+- stronger macro collision
+- 2–3 meso moves
+- denser print / scratch / type energy
+- 1–3 fragments maximum
+- less negative space, but still one focal subject
 
-For Editorial / Chaotic, the **redesigned background region** should usually be visually dominated by black, then dirty white / gray, then deep red.
+Chaotic means stronger graphic density, not more duplicated faces.
 
-Do not mechanically recolor the person's skin, clothes, or jewelry to match a percentage.
+## 10. Portrait fragments: same-target by default
 
-Avoid a global warm-brown / sepia filter unless the user asks for it.
+Any added face, eye, mouth, hand, profile, or portrait crop must come from the TARGET image for that output.
 
-## 9. Torn paper must be compositional
+For batch work:
+- do not borrow a face or body part from another batch photo by default
+- do not borrow from STYLE_REFERENCE images under any circumstance
+- cross-photo portrait fragments are allowed only if the user explicitly requests them
 
-Torn paper is not a border.
-
-At least one major tear or paper field should:
-
-- enter the image interior,
-- separate photography from graphic space,
-- pass behind or around the subject,
-- redirect the eye,
-- create a large black / white division,
-- or break the original photographic frame.
-
-Avoid equal torn borders on all four sides.
-
-## 10. Source-only portrait fragments
-
-Any added face, eye, mouth, hand, profile, or portrait crop must come from the user's supplied source photo(s).
-
-Never invent:
-
-- extra eyes
-- unrelated faces
-- look-alike portraits
-- decorative stranger hands
-
-If source reuse cannot be guaranteed, omit the portrait fragment.
-
-Use graphic material instead.
+If exact source reuse cannot be guaranteed, omit the portrait fragment and use non-portrait graphics instead.
 
 Recommended limits:
-
 - Clean: 0–1
 - Editorial: 0–2, usually 0–1
 - Chaotic: 1–3 maximum
 
-**Chaotic means denser graphics, not more repeated faces.**
+## 11. Face and hand occlusion budget
 
-## 11. Typography
+Unless the user explicitly asks for obstruction:
+
+- eyes, nose, mouth: no graphic occlusion
+- defining face contour: keep readable
+- fingers and hand silhouette: keep readable
+- hair / shoulder / clothing edges: controlled overlap is allowed
+- background immediately behind the subject: may be heavily redesigned
+
+The strongest tears, type, or paint should usually collide with silhouette edges, not the center of the face.
+
+## 12. Palette and material
+
+Read references/style-guide.md.
+
+Default graphic palette:
+- black / charcoal: dominant
+- deep red / oxblood / dark wine: accent
+- dirty white / off-white / photocopy gray: contrast
+- natural skin and meaningful source colors: preserved
+
+Apply palette dominance mainly to the redesigned graphic/background regions.
+
+Do not force the person into a palette percentage.
+
+Avoid a global sepia / warm-brown cast unless requested.
+
+## 13. Torn paper is structure, not decoration
+
+At least one major tear or paper field must do compositional work by:
+
+- entering the image interior
+- separating photography from graphic space
+- passing behind or around the person
+- redirecting the eye
+- creating a black / white division
+- breaking the original photographic frame
+
+Avoid equal torn borders on all four sides.
+
+## 14. Typography and “no text”
 
 If the user supplies exact text:
-
 - reproduce it exactly
 - preserve capitalization
-- use the main phrase once by default
-- keep it away from defining eyes, nose, and mouth unless the user explicitly wants overlap
+- use the primary phrase once by default
+- keep it away from defining facial features unless overlap is requested
 
-Typography should function as a graphic mass, not filler copy.
+If the user says **No text**:
+- use no readable words
+- use no letters unless the user explicitly asks for typographic texture
 
-If the user says **No text / 不要文字**:
+If the user says **No readable text**:
+- no readable words or phrases
+- abstract / cropped / damaged letterforms may be used sparingly only when they clearly function as texture
 
-Do not invent readable phrases, headlines, slogans, magazine copy, or motivational English.
+Do not invent slogans, magazine headlines, captions, or motivational English.
 
-Allowed:
+## 15. Batch / series planner
 
-- cropped letter fragments
-- illegible blackletter texture
-- blurred xerox type
-- newspaper-like texture
-- abstract letterforms
-- isolated symbols
+For two or more TARGET images, build an internal **Series Plan** before editing.
 
-These must not accidentally form a new readable slogan.
-
-## 12. Presets
-
-### Clean
-Photography first.
-
-- portrait attention: 80–90%
-- 0–1 portrait fragment
-- one restrained macro move
-- light torn paper
-- restrained red
-- moderate grain
-- generous negative space
-
-### Editorial — default
-Balanced portrait and design.
-
-- portrait attention: 70–85%
-- 0–2 portrait fragments
-- clear background reconstruction
-- 1–2 macro moves
-- 2–3 meso moves
-- visible xerox / halftone / torn-paper language
-- asymmetric editorial hierarchy
-- deliberate negative space
-
-### Chaotic
-Aggressive poster / DIY zine energy while keeping identity clear.
-
-- portrait attention: 60–80%
-- 1–3 portrait fragments maximum
-- stronger macro collisions
-- more torn paper, red gesture, scratches, xerox, and typography
-- less negative space
-- still one clear focal subject
-
-Do not create chaos by multiplying heads.
-
-## 13. Batch / series mode
-
-For two or more images, first build an internal **Series Plan**.
-
-Lock across the series:
-
-- black / red / off-white family
+Lock across the batch:
 - red hue
+- black / off-white relationship
 - paper family
 - xerox / grain character
 - contrast philosophy
 - typography family
-- overall emotional tone
+- overall mood
 
-Vary across images:
-
+Vary across the batch:
 - composition family
 - subject placement
-- macro tear direction
-- red shape direction
-- amount of negative space
-- use / non-use of portrait fragment
-- typography scale and placement
+- tear direction
+- red gesture direction
+- negative-space amount
+- fragment use / non-use
+- typography scale and position
 - halftone location
 - crop intensity
 
-Avoid using the same family on every image.
+Two adjacent outputs should not repeat the same macro geometry unless the user requests a deliberate pair.
 
-A good batch should feel like pages from the same zine, not one template with different photographs.
+## 16. Pixel-visible prompt compiler
 
-## 14. Reference images
+Before calling the image editor, compile only instructions that can become visible pixels.
 
-When style references are supplied, treat them as the main visual-language target after identity preservation and the user's current request.
+Use this order:
 
-Study:
+1. Identify the TARGET and state that STYLE_REFERENCE people are style-only and must not appear.
+2. Lock identity, face, pose, hands, clothes, jewelry, angle, and orientation.
+3. State which target regions should remain photographically faithful.
+4. State the selected composition family.
+5. State what happens to the original background.
+6. State the dominant Macro move and optional counterweight.
+7. State the Meso moves.
+8. State the Micro texture budget.
+9. State palette / material behavior.
+10. State portrait-fragment rule: same TARGET only or none.
+11. State exact text behavior.
+12. State batch continuity if applicable.
+13. State hard avoids.
 
-- collage density
-- black / red / white balance
-- scale of torn shapes
-- amount of background replacement
-- xerox texture
-- graffiti density
-- type energy
-- negative space
-- subject cutout treatment
-- hierarchy
+Do not put hidden analysis, file paths, percentages-as-theory, or long design explanations into the generation prompt.
 
-Do not copy the exact layout of a reference image.
+## 17. Generate, inspect, recover
 
-Aim for:
+After generation, inspect against references/quality-gate.md.
 
-**same visual language, different composition.**
-
-## 15. Prompt compiler
-
-Before calling the image editor, compile only pixel-visible instructions.
-
-The generation instruction should resolve, in this order:
-
-1. Preserve the exact supplied person and orientation.
-2. State which source areas must stay unchanged.
-3. State the selected composition family.
-4. State what happens to the original background.
-5. State the macro layer.
-6. State the meso layer.
-7. State the micro texture layer.
-8. State palette and material.
-9. State source-only portrait-fragment behavior.
-10. State exact text or no-readable-text behavior.
-11. State batch continuity when applicable.
-12. State hard avoids.
-
-Do not dump design theory, file paths, or hidden analysis into the image prompt.
-
-## 16. Quality gate
-
-After generation, inspect the result against `references/quality-gate.md`.
-
-Regenerate **once** before presenting if any critical failure occurs, especially:
+Regenerate once before presenting if any critical failure occurs, especially:
 
 - identity drift
-- altered pose / hand / clothing
+- changed pose / hand / clothing
+- style-reference person or body part leaks into the result
+- invented portrait fragment
 - changed orientation
-- invented face or portrait fragment
 - random readable text
 - border-only treatment
 - original background still dominates in Editorial / Chaotic
 - no internal graphic collision
-- chaotic clutter with no hierarchy
-- same layout duplicated within the batch
+- clutter with no hierarchy
+- duplicated batch layout
 
-If a second attempt still cannot preserve identity, simplify the collage rather than pushing style harder.
+Recovery sequence:
 
-## 17. Output behavior
+1. return to the original TARGET
+2. remove optional portrait fragments
+3. reduce one density level
+4. keep one composition family only
+5. restate the portrait lock and reference-contamination ban
+6. regenerate once
+
+If identity still drifts, simplify the background treatment rather than pushing style harder.
+
+## 18. Output behavior
 
 When editing tools are available:
-
-- perform the image edit directly
-- preserve the user's already-stated preferences across the batch
-- do not make the user rewrite the prompt for every photo
+- edit directly
+- keep already-stated preferences across the batch
+- do not ask the same setup questions for every image
 - do not precede the edit with a long explanation
-- show the result first
+- show the image result first
 
-If the user asks for rationale, prompt details, or composition notes, provide them after the image result.
+Only provide rationale, prompt details, or composition notes when the user asks.
 
-## 18. One-line definition
+## 19. One-line definition
 
-**Preserve the real person strictly, choose one source-aware poster composition, rebuild the surrounding space with black / deep-red / dirty-white torn-paper and xerox structure, use only sparse source-derived portrait fragments, and reject any result that reads as a border/filter treatment or an AI look-alike.**
+**Lock the real TARGET person, classify style references as style-only, choose one source-aware poster composition, rebuild the surrounding space with black / oxblood / dirty-white torn-paper and xerox structure, use only sparse same-target portrait fragments, and reject anything that reads as a border/filter treatment, reference-person contamination, or an AI look-alike.**
