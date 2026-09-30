@@ -1,75 +1,97 @@
 # Dark Collage Editor / 暗黑拼贴编辑器
 
-A no-code ChatGPT Project workflow for dark red / black / off-white portrait collage editing.  
-一个无需安装 Skill、无需写代码、无需复杂 Prompt 的 ChatGPT Project 修图工作流。
+A source-faithful portrait editing workflow for dark collage / punk / goth / emo / zine editorial artwork.
 
-## What it does / 它能做什么
+The project is designed around one rule:
 
-Upload one or more portrait photos, choose a style level, optionally add exact text, and generate a coherent dark collage / graffiti / zine series.
+**Preserve the real target person. Rebuild the surrounding design.**
 
-上传一张或多张人像照片，选择风格强度，可选输入指定文字，然后生成统一但不重复的暗黑拼贴 / 涂鸦 / zine 风格照片。
+## v3 architecture
 
-### Core principle / 核心原则
+The repository now has one canonical Skill plus Project-compatible files.
 
-**The original portrait remains the hero.**  
-**原始人物始终是画面的主体。**
+### Skill mode
+Use:
+- SKILL.md
+- references/style-guide.md
+- references/composition-families.md
+- references/quality-gate.md
 
-Visual complexity should come mainly from:
-- torn paper
-- red paint
-- typography
-- scratches
-- tape
-- halftone
-- grain
-- graffiti
+### ChatGPT Project mode
+Use:
+- PROJECT_INSTRUCTIONS.md
+- STYLE_GUIDE.md
+- optionally upload the three files under references/ for stronger behavior
+- add 3–6 non-private style reference images if desired
 
-画面的复杂度应该主要来自：
-- 撕纸
-- 红色油漆
-- 文字
-- 划痕
-- 胶带
-- 网点
-- 颗粒
-- 涂鸦
+## What v3 fixes
 
-—not from repeatedly duplicating the person's face.  
-而不是通过大量重复粘贴人物脸部来制造“混乱感”。
+Compared with earlier versions, v3 explicitly separates:
 
-## Start here / 从这里开始
+- **TARGET** photos — identity and body content come from here
+- **STYLE_REFERENCE** images — visual language only
+- **SERIES_REFERENCE** images — continuity only
 
-Read **[START_HERE.md](START_HERE.md)**.
+This prevents a common failure where the model borrows another person's face, eye, hand, hair, outfit, or pose from a style reference.
 
-查看 **[START_HERE.md](START_HERE.md)**，按照步骤 5 分钟即可完成自己的 ChatGPT Project。
+v3 also adds:
 
-You only need:
-- **[PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)** → paste into Project Instructions
-- **[STYLE_GUIDE.md](STYLE_GUIDE.md)** → upload as a Project file
-- optional 3–6 reference images
+- Portrait Design Card before generation
+- source-aware composition-family selection
+- Macro / Meso / Micro structure budget
+- same-TARGET portrait-fragment rule
+- face / hand occlusion rules
+- style-reference contamination checks
+- automatic one-pass recovery when generation fails
+- stronger batch anti-template rules
 
-你只需要：
-- **[PROJECT_INSTRUCTIONS.md](PROJECT_INSTRUCTIONS.md)** → 复制到 Project Instructions
-- **[STYLE_GUIDE.md](STYLE_GUIDE.md)** → 上传到 Project 文件
-- 可选：3–6 张参考效果图
+## Default behavior
 
-## Example requests / 使用示例
+If the user only asks for dark collage style:
 
-> Editorial. No text. Preserve my face, pose, clothes and original orientation.
+- preset: Editorial
+- readable text: none
+- identity preservation: strict
+- orientation: preserve
+- portrait fragments: 0–1
+- batch: coherent series with varied layouts
 
-> Editorial。不要文字。保留我的脸、动作、衣服和原始横竖构图。
+## Example request
 
-> Make these 8 photos one consistent dark collage series, but make every layout different.
+> Images 1–3 are style references. Edit images 4–9 as one Editorial series. No readable text. Keep my face, pose, hands, clothes, jewelry and original orientation. Use the references only for visual language, not for people or portrait fragments.
 
-> 把这 8 张做成同一个暗黑拼贴系列，但每张版式都不同。
+中文：
 
-## Status / 当前状态
+> 1–3 是风格参考图，帮我把 4–9 做成同一个 Editorial 系列。不要可读文字。严格保留我的脸、动作、手、衣服、首饰和原始横竖方向。参考图只学习视觉语言，不能借人物或人像碎片。
 
-Project-first beta / Project 优先测试版。
+## Visual signature
 
-This version is instruction-based. Exact pixel-level reuse of face / eye / hand fragments is not yet guaranteed by a deterministic crop engine.
+- black / charcoal as the main graphic mass
+- oxblood / dark wine red as structural accent
+- dirty white / photocopy gray as contrast
+- hand-torn paper
+- xerox / halftone
+- distressed print
+- controlled scratches / tape / hardware
+- sparse portrait fragments
+- strong internal composition, not decorative borders
 
-当前版本主要依靠 Project Instructions 约束模型。人物局部是否逐像素来自原图，目前还没有通过确定性裁剪引擎进行硬保证。
+## Test
+
+Use TEST_CASES.md.
+
+The most important v3 tests are:
+
+1. identity preservation
+2. style-reference contamination
+3. border-only failure
+4. same-target fragment authenticity
+5. exact / no-text behavior
+6. batch layout diversity
+
+## No-code setup
+
+See START_HERE.md.
 
 ## License
 
