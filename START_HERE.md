@@ -1,180 +1,172 @@
 # Start Here / 从这里开始
 
-## 5-minute no-code setup / 5 分钟零代码配置
+## Recommended setup / 推荐配置
 
-You do **not** need:
+Dark Collage Editor v3 can be used in two ways:
+
+1. **Skill mode** — recommended when your environment supports SKILL.md + references.
+2. **ChatGPT Project mode** — easiest no-code setup.
+
+---
+
+## A. Skill mode / Skill 模式
+
+Use these files together:
+
+- SKILL.md
+- references/style-guide.md
+- references/composition-families.md
+- references/quality-gate.md
+
+SKILL.md is the canonical workflow.
+
+The reference files provide:
+- visual grammar
+- source-aware layout families
+- post-generation quality checks
+
+Do not merge all four files into one giant prompt unless your environment requires it.
+
+---
+
+## B. ChatGPT Project mode / Project 模式
+
+You do not need:
 - Codex CLI
-- Skill installation
-- Plugin installation
 - Node.js
 - Python
 - API key
+- plugin installation
 
-你**不需要**：
-- Codex CLI
-- 安装 Skill
-- 安装 Plugin
-- Node.js
-- Python
-- API Key
+### Step 1 — Create a fresh Project
 
----
+Create a Project such as:
 
-## 1. Create a new ChatGPT Project / 新建 ChatGPT Project
+**Dark Collage Editor — v3**
 
-Create a fresh Project named:
+Use a fresh Project when testing new instruction revisions.
 
-新建一个 Project，名字可以叫：
+### Step 2 — Add Project Instructions
 
-**Dark Collage Editor — Beta**
+Copy the full contents of:
 
-Use a fresh Project so you can test the experience like a completely new user.
+**PROJECT_INSTRUCTIONS.md**
 
-建议新建一个全新的 Project，这样可以模拟陌生用户第一次使用时的真实体验。
+into the Project Instructions field.
 
----
+### Step 3 — Upload support files
 
-## 2. Add Project Instructions / 添加 Project Instructions
+Recommended uploads:
 
-Open **PROJECT_INSTRUCTIONS.md**.
+- STYLE_GUIDE.md
+- references/composition-families.md
+- references/quality-gate.md
 
-打开 **PROJECT_INSTRUCTIONS.md**。
+If the Project reliably reads SKILL.md as a file, you may also upload it for reference, but PROJECT_INSTRUCTIONS.md remains the direct Project instruction source.
 
-Copy the complete contents into your Project's instruction field.
+### Step 4 — Add style reference images
 
-把全文复制到 ChatGPT Project 的 Instructions 中。
+Optional but recommended: 3–6 non-private reference images.
 
-For the first test, do not shorten or rewrite it.
+A useful reference set may include:
+- 1 close-up
+- 1 full / half-body
+- 1 horizontal composition
+- 1 strong typography example
+- 1 no-text example
+- 1 quieter editorial page
 
-第一次测试建议不要删减，先直接使用完整版本。
+Do not upload private originals to a public GitHub repository.
 
----
+Reference images are **STYLE_REFERENCE only** unless the user explicitly says otherwise.
 
-## 3. Upload the Style Guide / 上传 Style Guide
+They must never donate:
+- faces
+- eyes
+- hands
+- hair
+- clothes
+- jewelry
+- body parts
+- portrait fragments
 
-Upload **STYLE_GUIDE.md** into the Project.
+### Step 5 — First real test
 
-把 **STYLE_GUIDE.md** 上传到 Project 文件中。
+Upload:
+- 1–3 style references
+- 1 target portrait
 
-This gives the Project a separate visual reference document.
+Then send:
 
-这样模型除了 Instructions 之外，还能单独参考一份视觉规范。
+> Images 1–3 are style references only. Edit image 4 in Editorial style. No readable text. Preserve my face, pose, hands, clothes, jewelry and original orientation.
 
----
+中文：
 
-## 4. Optional: add 3–6 reference images / 可选：加入 3–6 张参考效果图
+> 1–3 是风格参考图，只参考视觉语言。帮我修第 4 张，Editorial，不要可读文字。严格保留我的脸、动作、手、衣服、首饰和原始横竖方向。
 
-You can test without reference images first.
-
-建议第一轮先不上传参考图，先看纯 Instructions + Style Guide 能不能跑通。
-
-For a stronger style lock, add 3–6 examples later:
-- one Clean
-- two Editorial
-- one horizontal image
-- one text example
-- one no-text example
-
-如果基础测试通过，再加入 3–6 张风格参考图，例如：
-- 1 张 Clean
-- 2 张 Editorial
-- 1 张横图
-- 1 张有文字
-- 1 张无文字
-
-Do not upload private CR2 originals to a public GitHub repository.
-
-不要把私人 CR2 原图上传到公开 GitHub 仓库。
+Check against TEST_CASES.md Test 02 and Test 05.
 
 ---
 
-## 5. First test / 第一次测试
+## Batch test / 批量测试
 
-Start a new chat inside the Project.
+Upload 4–9 TARGET photos plus optional style references.
 
-在这个 Project 中新建聊天。
+Use:
 
-Upload one portrait and send:
+> Make the target photos one coherent Editorial series. No readable text. Keep the red hue, paper, xerox texture and overall mood consistent, but use different source-aware compositions for each image. Do not borrow people or portrait fragments from style references.
 
-上传一张照片，然后发送：
+中文：
 
-> Editorial. No text. Preserve my face, pose, clothes and original orientation.
-
-或者中文：
-
-> Editorial。不要文字。保留我的脸、动作、衣服和原始横竖构图。
-
-Then compare the result with Test 01 in **TEST_CASES.md**.
-
-然后按照 **TEST_CASES.md** 的 Test 01 检查结果。
+> 把这些 TARGET 照片做成同一个 Editorial 系列。不要可读文字。统一红色色调、纸张、xerox 纹理和整体气质，但每张根据原图使用不同构图。绝对不要从参考图借人物或人像碎片。
 
 ---
 
-## 6. Exact text test / 精确文字测试
+## What success looks like / 成功标准
 
-Use another image and send:
+A successful result should have:
 
-换一张照片，发送：
+- same person
+- same face
+- same pose
+- same hands
+- same clothes / jewelry
+- same orientation
+- no style-reference person contamination
+- one clear macro graphic idea
+- collage entering the image interior
+- black / oxblood / dirty-white visual hierarchy
+- no unwanted readable text
+- source-authentic fragments only
+- batch consistency without template repetition
 
-> Editorial. Text: STAY IN THE NOISE. Use it once. Do not cover my face.
+A failed result often looks like:
 
-或者：
-
-> Editorial。文字写：STAY IN THE NOISE。只出现一次，不要挡脸。
-
----
-
-## 7. Batch test / 批量测试
-
-Upload 4–9 photos and send:
-
-上传 4–9 张照片，然后发送：
-
-> Make these one consistent dark collage series. Editorial. No text. Keep the same palette and texture family, but make every layout different. Do not create chaos by repeating my face.
-
-或者：
-
-> 把这些照片做成同一个暗黑拼贴系列。Editorial，不要文字。统一配色和材质，但每张构图都不同。不要通过重复粘贴我的脸来制造混乱感。
-
----
-
-## What counts as success? / 什么算测试通过？
-
-A good first result should satisfy most of these:
-
-第一次结果最好满足：
-
-- same person / 人物还是本人
-- same pose / 动作基本保持
-- clothes and accessories preserved / 衣服和首饰没有乱改
-- horizontal stays horizontal / 横图不被强行改成竖图
-- vertical stays vertical / 竖图不被强行改成横图
-- one dominant portrait / 主体人物仍然占主导
-- no wall of repeated faces / 没有大量重复贴脸
-- no invented readable text when "No text" is requested / “不要文字”时不出现乱写的英文
-- exact custom text / 自定义文字拼写正确
-- batch looks consistent but not copy-pasted / 批量照片统一但不套同一个模板
+- original photo + border
+- original photo + grain
+- random red scratches
+- another person's eye / face appears
+- face becomes an AI look-alike
+- all batch pages use the same layout
+- random English is invented
 
 ---
 
-## If something fails / 如果测试失败
+## If a test fails / 测试失败怎么办
 
-Do not rewrite everything immediately.
+Do not rewrite everything.
 
-不要一失败就重写整个 Instructions。
+Use TEST_CASES.md to classify the failure.
 
-Record the failure category:
+Then change the smallest relevant rule.
 
-记录失败类型，例如：
-- identity drift / 脸变了
-- pose drift / 动作变了
-- orientation changed / 横竖方向变了
-- too many portrait fragments / 人像碎片太多
-- invented text / 乱加文字
-- text misspelled / 文字拼错
-- too cluttered / 太乱
-- batch layouts too repetitive / 批量构图过于重复
+Examples:
 
-Then change only the relevant rule and re-run the same test.
+- face changed → strengthen portrait lock or simplify overlap
+- reference person's eye appears → strengthen STYLE_REFERENCE contamination ban
+- style too weak → strengthen Macro structure, not Micro clutter
+- too messy → remove Micro first
+- batch repetitive → change composition-family distribution
+- border-only → require an interior collision and stronger background reconstruction
 
-然后只改对应规则，再用同一张图和同一测试语句重新测试。
+Always retest with the same source image and prompt when comparing instruction versions.
