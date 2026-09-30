@@ -1,197 +1,308 @@
-# Dark Collage Editor — Style Guide  
-# 暗黑拼贴编辑器 — 视觉风格指南
+# Dark Collage Editor v3 — Style Guide
+# 暗黑拼贴编辑器 v3 — 视觉规范
 
-## 1. Visual identity / 视觉定位
+> Compatibility copy for ChatGPT Project users. Canonical Skill reference: references/style-guide.md.
 
-Dark editorial collage with punk / goth / emo / zine influence.  
-暗黑 editorial 拼贴，带 punk / goth / emo / zine 气质。
+## Core visual identity / 核心视觉定位
 
-The style should feel:
-风格应该：
-- designed, not randomly cluttered / 有设计感，而不是单纯杂乱
-- tactile, not glossy / 有纸张与印刷质感，而不是光滑商业感
-- graphic but still photographic / 有平面设计感，但仍保留照片感
-- rebellious but readable / 有反叛感，但画面仍清晰
-- coherent across a series / 批量图片有系列统一性
+Dark editorial collage with punk / goth / emo / zine influence.
 
----
+目标：
+- 有设计感，不是随机堆满
+- 有纸张 / 印刷触感，不是光滑滤镜
+- 平面设计感强，但人物仍然保持摄影真实
+- 反叛但可读
+- 每张根据原照片构图，不套模板
+- 批量统一但不重复
 
-## 2. Palette / 配色
+人物是事实锚点，拼贴是人物周围重新设计的视觉环境。
 
-Dominant / 主色：
-- black / 黑
-- charcoal / 炭黑
+## Palette / 配色
 
-Accent / 强调色：
-- deep red / 深红
-- oxblood / 暗酒红
-- dried-blood red / 干血红
+主 graphic field：
+- black
+- charcoal
+- deep black
 
-Contrast / 对比色：
-- dirty white / 脏白
-- off-white / 灰白
-- photocopy gray / 复印灰
+强调：
+- oxblood
+- dried-blood red
+- dark wine
+- deep crimson
 
-Skin may retain natural tone when it helps preserve identity.  
-如果自然肤色更有利于保留人物身份，可以保留。
+对比：
+- dirty white
+- warm off-white
+- photocopy gray
+- paper gray
 
-Avoid turning the entire image into flat bright red.  
-不要把整张图染成高饱和亮红。
+人物肤色、重要衣服颜色、首饰颜色可以自然保留。
 
----
+不要把整张图做成：
+- 全红
+- sepia
+- 橙棕
+- 暖棕滤镜
 
-## 3. Portrait hierarchy / 人像层级
+Editorial / Chaotic 中，黑色通常承担最大的 graphic mass，红色更少但更有结构作用。
 
-The portrait is the hero.  
-人物永远是主角。
+## Style reference rule / 参考图规则
 
-A good composition usually contains:
-好的构图通常是：
-- one dominant source portrait / 一个主要原图人物
-- zero to two small portrait fragments / 0–2 个小的人像局部
-- more non-portrait collage material / 更多非人物拼贴元素
+参考图只学习：
+- 黑 / 红 / 白关系
+- 撕纸尺度
+- 红色笔触宽度和方向
+- xerox / halftone 密度
+- typography 大小
+- negative space
+- paper roughness
+- portrait isolation
+- density gradient
 
-The human should read first.  
-第一眼看到的是人物。
+绝对不要复制参考图人物的：
+- 脸
+- 发型
+- 身体
+- 衣服
+- 首饰
+- 动作
+- 人像碎片
 
-The collage should read second.  
-第二眼才是拼贴设计。
+**Style reference = design language only.**
 
----
+## Material vocabulary / 材质语言
 
-## 4. Texture vocabulary / 纹理语言
+优先：
+- hand-torn paper
+- fibrous ripped edges
+- rough uncoated paper
+- xerox / photocopy
+- coarse halftone
+- distressed ink
+- risograph / screen-print breakup
+- dry-brush red
+- ink splatter
+- tape
+- scratches
+- scuffs
+- pencil / chalk residue
+- chain / cross / safety-pin-like hardware
+- distressed type
+- slight misregistration
 
-Use only some of these at once.  
-每张图不要把所有元素全部塞满。
+每张只选部分，不要全塞。
 
-Good options / 推荐：
-- torn paper / 撕纸
-- photocopy grain / 复印颗粒
-- halftone / 网点
-- rough paper fibers / 粗糙纸纤维
-- film grain / 胶片颗粒
-- scratches / 划痕
-- red paint / 红色油漆
-- ink splatter / 墨水喷溅
-- tape / 胶带
-- marker scribbles / 马克笔涂鸦
-- pencil / chalk marks / 铅笔、粉笔痕迹
-- distressed print / 破损印刷
-- chain / cross / hardware motifs / 链条、十字、金属元素
+## Material scale / 尺度层级
 
-Do not max out every texture simultaneously.  
-不要每一种纹理都拉满。
+### Large
+- 主要撕纸
+- 大黑 / 白场
+- red structural gesture
+- oversized type
 
----
+### Medium
+- xerox patch
+- tape bridge
+- same-target portrait fragment
+- halftone block
 
-## 5. Good chaos vs bad chaos / 好的混乱 vs 坏的混乱
+### Small
+- scratches
+- fibers
+- tiny symbols
+- speckle
+- print residue
 
-Good chaos / 好的混乱：
-- asymmetry / 非对称
-- clear focal point / 有明确视觉中心
-- uneven red accents / 红色分布不平均但有意图
-- cropped typography / 被裁切的文字
-- intentional overlap / 有意图的重叠
-- directional movement / 有视觉方向感
-- negative space / 有留白
-- multiple texture scales / 不同尺度纹理
+如果只有很多小划痕，没有大结构，风格失败。
 
-Bad chaos / 坏的混乱：
-- five or more repeated faces / 五张以上重复人物脸
-- every corner filled / 每个角落都塞满
-- random readable phrases / 随机可读句子
-- accidental face obstruction / 无意义挡脸
-- identical stickers everywhere / 到处重复同一种贴纸
-- no dominant subject / 没有主体
-- same layout repeated across batch / 批量每张都同构图
+## Red behavior / 红色必须有作用
 
----
+好的红色：
+- 平衡人物视觉重量
+- 延续手臂 / 身体 / 视线方向
+- 连接摄影区与纸张区
+- 强化撕纸 seam
+- 标记一个 pressure point
+- 支撑 typography
+- 沿发丝 / 肩膀 / 衣服边缘形成窄 red rim
 
-## 6. Portrait fragments / 人像碎片
+差的红色：
+- 四角平均撒
+- 全图红色滤镜
+- 在皮肤上乱喷
+- 与人物动作无关的随机红线
 
-Use fragments only when they improve composition.  
-人物局部只在真正有助于构图时使用。
+删除红色后如果构图几乎没变化，说明红色没有结构作用。
 
-Good / 好：
-- one eye crop / 一小块眼睛
-- one hand crop / 一小块手部
-- one alternate profile / 一个侧脸局部
-- one small black-and-white duplicate from user's source / 一个来自原图的小型黑白人物碎片
+## Torn paper / 撕纸
 
-Bad / 差：
-- rows of repeated heads / 一排重复头像
-- AI-invented eyes / AI 生成的陌生眼睛
-- unrelated faces / 无关人物脸
-- portrait fragments overpowering the main subject / 人像碎片比主体还抢眼
+好的撕纸：
+- 大尺度
+- 手撕不规则
+- 有纤维
+- 有 uneven pressure points
+- 真正进入画面内部
+- 从人物后方 / 旁边穿过
+- 分割 photography 与 graphic field
+- 产生方向感
 
-When uncertain, use fewer.  
-拿不准时，宁少勿多。
+差的撕纸：
+- 四边统一 ripped border
+- 人物全身一圈白色 sticker outline
+- 干净数字蒙版
+- 只撕四角
+- 批量重复同一个 torn strip
 
----
+## Xerox / halftone
 
-## 7. Typography / 字体与文字
+适合：
+- background
+- secondary same-target fragment
+- clothing-adjacent graphic region
+- abstract type
+- architecture / object fragments
+- paper field
 
-Typography is graphic structure, not filler.  
-文字是构图结构，不是填空。
+少用在：
+- eyes
+- nose
+- mouth
+- defining face contour
+- fingers
 
-Preferred / 推荐：
-- distressed serif / 破损衬线
-- fragmented blackletter / 哥特字碎片
-- photocopied sans serif / 复印无衬线
-- typewriter label / 打字机标签
-- stencil / 模板字体
-- rough marker / 粗糙手写
-- cut-paper lettering / 剪贴字
+除非用户明确要求，主脸应该保持摄影真实。
 
-Use exact user-supplied wording.  
-主文字必须使用用户给出的原文。
+## Portrait integration / 人物必须融进设计
 
-If no text is requested, use texture and abstract marks instead of fake readable copy.  
-如果用户说不要文字，用纹理和抽象符号代替，不要乱造英文。
+人物不能像一个贴纸浮在海报上。
 
----
+至少用一个方式把人物和 graphic field 连接：
+- 撕纸从人物后方经过
+- black field 接触 silhouette
+- red rim 沿原人物轮廓
+- type 被人物遮住一部分
+- paper field 与衣服边缘发生 overlap
+- xerox structure 顺着动作方向
+- photography → paper 的 grain transition
 
-## 8. Composition ideas / 构图变化
+不要给整个人统一描边。
 
-Vary between images:
-不同图片可以变化：
-- large centered portrait + left torn edge / 大主体 + 左侧撕纸
-- portrait pushed to one side + negative space / 主体偏一侧 + 大量留白
-- diagonal torn-paper band / 斜向撕纸带
-- one small inset portrait / 一个小人物局部
-- oversized background word / 一个超大背景字
-- no portrait inset, only paint and texture / 不放人物局部，只用油漆与纹理
-- horizontal spread / 横向版式
-- tight crop with minimal graphics / 紧裁主体 + 少量装饰
+## Occlusion / 遮挡
 
-A batch should share a visual language but not a template.  
-批量图片应该风格统一，但不是模板复制。
+除非明确要求：
+- 不遮眼睛
+- 不遮鼻子
+- 不遮嘴
+- 不遮手指数
+- 不遮重要首饰
+- 不改变衣服轮廓
 
----
+更适合 overlap：
+- hair perimeter
+- shoulder
+- outer arm
+- torso edge
+- non-critical clothing
+- background
 
-## 9. Preset feel / 三档风格
+## Typography
+
+推荐：
+- distressed serif
+- blackletter fragment
+- xerox sans
+- stencil
+- rough marker
+- typewriter label
+- cut-paper lettering
+
+用户给文字：
+- 原样
+- 大小写一致
+- 主文字通常一次
+
+No text：
+- 不出现文字
+- 不出现字母，除非用户明确允许 typographic texture
+
+No readable text：
+- 可以少量破损 / 裁切字形
+- 不能组成可读文案
+
+## Good chaos / 好的混乱
+
+- asymmetry
+- one focal person
+- one dominant movement
+- intentional red
+- purposeful overlap
+- mixed texture scales
+- negative space
+- one strong material collision
+
+## Bad chaos / 坏的混乱
+
+- 每个角落都塞满
+- 重复很多脸
+- 生成陌生眼睛 / 嘴 / 手
+- 随机英文
+- sticker spam
+- 多个一样强的红色点
+- micro texture 覆盖一切
+- 批量套同一模板
+- STYLE_REFERENCE 人物混入结果
+
+## Density / 三档密度
 
 ### Clean
-Photo first, collage second.  
-照片为主，拼贴为辅。
+- 照片主导
+- 1 个 Macro
+- 1–2 个 Meso
+- 少量 Micro
+- 留白明显
 
 ### Editorial
-Balanced photo and design. Default signature style.  
-照片和设计平衡，是默认核心风格。
+- 人物与设计平衡
+- 1 个 dominant Macro + optional counterweight
+- 大约 2 个 Meso
+- controlled xerox / halftone / tear
+- 背景明显重新设计
 
 ### Chaotic
-Dense zine / poster energy, but still controlled and source-faithful.  
-更密集、更像 zine / 海报，但仍然要控制，并保留原人物。
+- 更强 Macro collision
+- 2–3 个 Meso
+- 更多 print / scratch / type energy
+- 留白减少但仍然存在
+- 人物仍然唯一主视觉
+- 不出现陌生人像碎片
 
----
+## Thumbnail test / 缩略图测试
 
-## 10. Final visual test / 最终检查
+缩小以后应该按这个顺序读：
 
-Ask:
-检查：
+1. 人物
+2. 一个大的 graphic idea
+3. 黑 / oxblood / dirty-white 关系
+4. 撕纸 / xerox 材质
+5. 小纹理
 
-- Is the person still clearly the subject? / 人物是否仍然是主体？
-- Does it feel designed, not merely busy? / 是“有设计”，还是单纯“很乱”？
-- Is the red intentional? / 红色是否有明确意图？
-- Are portrait fragments sparse? / 人像碎片是否克制？
-- Does the batch feel related without copy-pasting layouts? / 批量图片是否统一但不重复？
+如果第一眼看到的是小划痕、小符号、随机文字，删掉细节。
+
+## Series rhythm / 系列节奏
+
+整组保持：
+- 同一个 red family
+- 同一个 paper family
+- 同一种 xerox character
+- 同一种 contrast philosophy
+
+每张变化：
+- page density
+- tear direction
+- composition family
+- subject position
+- type use
+- fragment use
+- red location
+
+好的系列应该有“安静页”和“强烈页”的节奏，不要每张都一样满。
