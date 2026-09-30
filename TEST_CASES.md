@@ -1,141 +1,174 @@
-# Dark Collage Editor — Smoke Tests  
-# 暗黑拼贴编辑器 — 基础测试
+# Dark Collage Editor v3 — Smoke Tests
+# 暗黑拼贴编辑器 v3 — 基础测试
 
-Use these tests in a fresh ChatGPT Project.  
-建议在全新的 ChatGPT Project 中运行这些测试。
+Use the same source image and prompt when comparing revisions. Test identity first, then style strength, then batch consistency.
 
----
+## Test 01 — Single image / 单张无文字
 
-## Test 01 — Single image, no text / 单张，无文字
+User:
+> Editorial. No text. Preserve my face, pose, hands, clothes, jewelry and original orientation.
 
-### User message / 用户输入
+Pass:
+- same person
+- same pose and hands
+- clothes / jewelry unchanged
+- orientation unchanged
+- no readable words or letters
+- background clearly redesigned
+- at least one Macro structure enters the image interior
+- result is not just border + grain
 
-> Editorial. No text. Preserve my face, pose, clothes and original orientation.
+## Test 02 — Style references must not leak / 参考图人物不能混入
 
-中文：
+Input:
+- 1–3 STYLE_REFERENCE images containing another person
+- 1 TARGET portrait
 
-> Editorial。不要文字。保留我的脸、动作、衣服和原始横竖构图。
+User:
+> Images 1–3 are style references only. Edit image 4 in the same visual language. Editorial. No readable text.
 
-### Pass / 通过标准
+Pass:
+- output person comes only from TARGET
+- no reference face / eye / hand / hair / outfit / pose appears
+- reference influences palette, tear scale, xerox, density and hierarchy only
+- layout is source-specific rather than copied exactly
 
-- identity preserved / 人还是本人
-- pose preserved / 动作保留
-- clothes and accessories preserved / 衣服和饰品不乱改
-- orientation preserved / 横竖方向保留
-- one dominant portrait / 一个明确主体
-- no invented readable text / 不出现随机可读文字
-- no more than 2 portrait fragments / 不超过 2 个人像碎片
-- visual complexity mainly from non-portrait elements / 复杂度主要来自非人物元素
+Critical fail:
+- any human feature from reference images appears
 
----
+## Test 03 — Exact custom text / 精确文字
 
-## Test 02 — Exact custom text / 精确文字
-
-### User message / 用户输入
-
+User:
 > Editorial. Text: STAY IN THE NOISE. Use it once. Do not cover my face.
 
-中文：
+Pass:
+- exact spelling and capitalization
+- phrase appears once as primary readable text
+- no additional invented slogan
+- face remains unobstructed
+- identity / pose remain stable
 
-> Editorial。文字写：STAY IN THE NOISE。只出现一次，不要挡脸。
+## Test 04 — No readable text vs no text
 
-### Pass / 通过标准
+A:
+> Editorial. No text.
 
-- exact spelling / 拼写完全正确
-- appears once as main readable phrase / 主文字只出现一次
-- does not cover key facial features / 不挡关键五官
-- identity and pose remain stable / 人物和动作保持
+Expected:
+- no words
+- no letters
+- no fake magazine copy
 
----
+B:
+> Editorial. No readable text. Abstract distressed letter fragments are okay.
 
-## Test 03 — Batch series / 批量系列
+Expected:
+- no readable phrase
+- abstract letter fragments may appear sparingly
 
-### User message / 用户输入
+## Test 05 — Strong Editorial / 不允许边框式假拼贴
 
-> Make these one consistent dark collage series. Editorial. No text. Keep the same palette and texture family, but make every layout different. Do not create chaos by repeating my face.
+User:
+> Editorial. No readable text. Make the background substantially dark-zine while keeping me unchanged.
 
-中文：
+Pass:
+- one dominant Macro field / tear / xerox structure
+- black / oxblood / dirty-white relationship is obvious
+- original background is materially transformed
+- collage enters the interior
+- person remains first visual read
 
-> 把这些照片做成同一个暗黑拼贴系列。Editorial，不要文字。统一配色和纹理，但每张构图都不同。不要通过重复贴我的脸来制造混乱感。
+Fail:
+- original photo stays intact with only side borders, grain, scratches or corner decoration
 
-### Pass / 通过标准
+## Test 06 — Same-target fragment authenticity / 人像碎片来源
 
-- same palette family / 配色统一
-- same grain / paper language / 颗粒和纸张语言统一
-- different layouts / 每张版式不同
-- repeated faces are not the main variation / 不靠重复人脸制造变化
-- orientation preserved per image / 每张原始横竖方向保留
-- no invented readable text / 不乱加文字
-- feels like one editorial series / 看起来像同一个系列
+User:
+> Editorial. Use at most one portrait fragment, and it must come from this exact photo.
 
----
+Pass:
+- at most one fragment
+- fragment is recognizably derived from same TARGET
+- if exact reuse cannot be maintained, no portrait fragment is used
+- no invented alternate face
 
-## Test 04 — Chaotic without face spam / Chaotic 但不狂贴脸
+## Test 07 — Chaotic without face spam
 
-### User message / 用户输入
+User:
+> Chaotic. No readable text. Make it aggressive with torn paper, oxblood paint, xerox, scratches and graffiti, but do not repeat my face.
 
-> Chaotic. No text. Make it aggressive with torn paper, red paint, scratches and graffiti. Do not add extra repeated faces.
+Pass:
+- denser than Editorial
+- macro structure remains clear
+- no wall of faces
+- no stranger portrait fragment
+- chaos comes from graphics / material, not duplicated portraits
 
-中文：
+## Test 08 — Batch series / 批量系列
 
-> Chaotic。不要文字。加强撕纸、红色油漆、划痕和涂鸦，但不要重复添加很多我的脸。
+Upload 4–9 TARGET photos.
 
-### Pass / 通过标准
+User:
+> Make these one coherent Editorial series. No readable text. Keep the palette and material language consistent, but make every page composition different.
 
-- denser than Editorial / 比 Editorial 更密集
-- no wall of faces / 没有大量贴脸
-- main subject remains clear / 主体清晰
-- chaos mainly from graphics and texture / 混乱主要来自图形和纹理
+Pass:
+- same red hue / paper / xerox family
+- at least three distinct macro geometries when source set permits
+- adjacent pages do not mechanically repeat the same composition family
+- fragment use varies
+- page density varies
+- each image preserves original orientation
+- series feels related, not templated
 
----
+## Test 09 — Horizontal negative-space source
 
-## Test 05 — Minimal request / 极简输入
+User:
+> Editorial. No text. Preserve the horizontal composition.
 
-### User message / 用户输入
+Pass:
+- stays horizontal
+- does not force a centered portrait
+- graphic field uses existing gaze / arm / negative-space direction
+- no decorative perimeter frame
 
-> Make this dark collage style.
+## Test 10 — Tight face crop
 
-中文：
+User:
+> Editorial. No readable text. Keep my face completely recognizable.
 
-> 把这张修成暗黑拼贴风。
+Pass:
+- eyes / nose / mouth unchanged
+- no halftone or tear covers defining face features
+- strongest graphics occur at edge / hair / shoulder / background
+- skin is not rebuilt or over-smoothed
 
-### Expected / 预期
+## Failure log
 
-Use defaults:
-默认：
-- Editorial
-- No text / 不加文字
-- preserve identity / 严格保留人物
+Record only the observed failure and change the smallest relevant rule.
 
-or ask only the minimum questions defined in PROJECT_INSTRUCTIONS.md.  
-或者只问 PROJECT_INSTRUCTIONS.md 中定义的最少问题。
+Categories:
+- identity drift
+- hand / pose drift
+- clothes / jewelry drift
+- orientation changed
+- style-reference contamination
+- invented portrait fragment
+- random readable text
+- exact text wrong
+- border-only treatment
+- style too weak
+- micro clutter
+- face over-occluded
+- batch template repetition
+- palette drift
+- other
 
-Do not ask for technical settings.  
-不要要求用户填写技术参数。
+Template:
 
----
-
-## Failure log / 失败记录
-
-```text
-Test / 测试：
-Source / 输入图片：
-Failure category / 失败类型：
-- identity drift / 脸变了
-- pose drift / 动作变了
-- orientation changed / 横竖方向改变
-- too many portrait fragments / 人像碎片太多
-- invented text / 乱加文字
-- text misspelled / 文字拼错
-- too cluttered / 太乱
-- batch layouts too repetitive / 批量构图太重复
-- style too weak / 风格太弱
-- other / 其他
-
-Observed / 实际：
-Expected / 预期：
-Next rule to adjust / 下一步只调整哪条规则：
-```
-
-Use the same source and same prompt when comparing instruction revisions.  
-比较不同版本 Instructions 时，尽量使用同一张图和同一条测试语句。
+Test:
+TARGET:
+STYLE_REFERENCE:
+Preset:
+Observed:
+Expected:
+Failure category:
+One rule to change:
