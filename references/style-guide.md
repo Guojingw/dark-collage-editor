@@ -1,178 +1,312 @@
-# Style Guide — Dark Collage Editor v2
+# Style Guide — Dark Collage Editor v3
 
-## Core identity
+## 1. Core visual identity
 
 Dark editorial collage with punk / goth / emo / zine influence.
 
 The result should feel:
-
-- designed, not randomly cluttered
+- art-directed, not randomly cluttered
 - tactile, not glossy
 - graphic but still photographic
 - rebellious but readable
+- source-specific, not template-driven
 - coherent across a series
 - materially layered without losing the portrait
 
-## Palette
+The portrait is the factual anchor. The collage is the designed environment around it.
 
-Default graphic palette:
+## 2. Default palette hierarchy
 
-- black / charcoal / deep black
-- deep red / oxblood / dried-blood red / dark wine
-- dirty white / off-white / photocopy gray
+Primary graphic fields:
+- black
+- charcoal
+- deep black
+
+Accent:
+- oxblood
+- dried-blood red
+- dark wine
+- deep crimson
+
+Contrast:
+- dirty white
+- warm off-white
+- photocopy gray
+- paper gray
 
 Natural skin, meaningful garment colors, and jewelry may remain.
 
-Do not flatten the entire image into red, sepia, or warm brown.
+Do not force the entire image into red, sepia, orange, or warm brown.
 
-## Material vocabulary
+In Editorial / Chaotic, black should usually carry the largest graphic mass. Red should be structurally important but smaller.
 
-Preferred:
+## 3. Reference-image matching
 
-- torn paper
-- ripped fibers
+When style references are supplied, match their **relationships**, not their literal objects.
+
+Extract:
+- black / red / white balance
+- scale of torn-paper pieces
+- red stroke width and direction
+- amount of xerox / halftone
+- type scale
+- negative-space amount
+- paper roughness
+- portrait isolation
+- density gradient across the page
+
+Do not copy:
+- reference person's face
+- hair
+- body
+- outfit
+- jewelry
+- pose
+- portrait fragments
+- exact layout
+
+Style reference = design language only.
+
+## 4. Material vocabulary
+
+Preferred materials:
+- hand-torn paper
+- fibrous ripped edges
 - rough uncoated paper
 - xerox / photocopy
-- halftone
+- coarse halftone
 - distressed ink
-- film-like grain
-- scratches
-- scuffs
-- red paint / dry brush
+- screen-print / risograph-like breakup
+- dry-brush red
 - ink splatter
 - tape
-- pencil / chalk / marker residue
-- chains / crosses / safety-pin-like hardware
-- cropped typography
-- misregistration
+- scratches
+- scuffs
+- pencil / chalk residue
+- chain / cross / safety-pin-like hardware
+- distressed type
+- slight print misregistration
 
-Use only a subset at once.
+Use a subset, not the whole list.
 
-## Good chaos
+## 5. Material scale hierarchy
 
-- asymmetry
-- one clear visual anchor
-- one dominant directional movement
-- uneven but intentional red
-- cropped type
-- purposeful overlap
-- mixed texture scales
-- preserved negative space
-- one strong material collision
+A strong page uses several scales:
 
-## Bad chaos
+### Large
+- one major tear
+- one large black / white field
+- one red structural gesture
+- one oversized type field
 
-- every corner filled
-- five repeated heads
-- invented eyes
-- random readable phrases
-- identical stickers everywhere
-- no focal subject
-- many equally strong red marks
-- micro texture replacing composition
-- same template repeated in a batch
+### Medium
+- one xerox patch
+- one tape bridge
+- one source-derived fragment
+- one halftone block
 
-## Subject treatment
+### Small
+- scratch
+- fiber
+- tiny symbol
+- speckle
+- print residue
 
-The person is the hero.
+Do not let small marks substitute for composition.
 
-Use:
+## 6. Red behavior
 
-- one dominant source portrait
-- zero to two source-derived fragments for Editorial
-- more non-portrait graphic material than portrait duplication
+Red must do a job.
 
-The face should remain photographic and recognizable unless the user explicitly requests otherwise.
+Good uses:
+- counterweight the portrait
+- extend arm / gaze / body direction
+- bridge photo and paper zones
+- reinforce a torn seam
+- mark one pressure point
+- support type
+- create one focal accent
+- rim a hair / shoulder / clothing silhouette
 
-## Red behavior
+Bad uses:
+- equal red marks in every corner
+- full-image red wash
+- red splatter over skin
+- random red scratches with no relation to pose or layout
 
-Red should do a job:
+If removing the red changes nothing about balance or movement, redesign it.
 
-- create counterweight
-- extend pose direction
-- connect two collage zones
-- reinforce a tear
-- mark a pressure point
-- support typography
-- create a focal accent
+## 7. Torn-paper behavior
 
-Do not sprinkle red everywhere evenly.
-
-## Torn-paper behavior
-
-Good torn paper:
-
-- broad shape
-- irregular hand-ripped contour
-- visible paper fibers
-- local abrasion
-- passes behind / beside subject
+Good:
+- broad irregular shape
+- visible fibers
+- uneven pressure points
+- shallow notches
+- enters the image interior
+- passes behind or beside the portrait
 - separates photographic and graphic fields
+- creates directional movement
 
-Bad torn paper:
+Bad:
+- four equal torn borders
+- white sticker outline around the whole person
+- clean digital clipping path
+- decorative ripped corners only
+- identical torn strip reused across a batch
 
-- uniform deckled border
-- sticker outline around the whole subject
-- four equal torn edges
-- repeated identical ripped strips
+The torn edge should look tactile and asymmetric, not like a preset frame.
 
-## Photocopy / halftone
+## 8. Photocopy / halftone behavior
 
-Use on:
-
-- background fragments
-- secondary source-derived portrait crop
+Good locations:
+- background
+- secondary target-derived fragment
+- clothing-adjacent graphic zone
 - abstract type
-- architectural / fabric / object fragments
+- architecture / object fragment
+- paper field
 
-Use lightly on the main face.
+Use lightly or not at all on:
+- eyes
+- nose
+- mouth
+- defining face contour
+- fingers
 
-Keep eyes, nose, mouth, and defining facial structure readable.
+The main face should remain recognizably photographic unless the user explicitly requests a xerox-face treatment.
 
-## Typography
+## 9. Portrait integration
+
+The person should not look like a sticker floating on a poster.
+
+Ground the portrait through at least one of:
+- tear passing behind the body
+- black field touching the silhouette
+- red rim following a source contour
+- type partially hidden by the body
+- paper field intersecting clothing edge
+- xerox structure aligned to pose
+- shadow / grain transition between photo and paper
+
+Do not add a uniform outline around the entire person.
+
+## 10. Occlusion behavior
+
+Unless requested:
+- do not cover eyes, nose, or mouth
+- do not obscure finger count
+- do not cover important jewelry
+- do not change clothing silhouette
+
+Controlled overlap is best at:
+- hair perimeter
+- shoulder
+- outer arm
+- torso edge
+- non-critical clothing area
+
+## 11. Typography
 
 Preferred:
-
 - distressed serif
-- blackletter fragments
+- blackletter fragment
 - xerox sans serif
 - stencil
 - rough marker
 - typewriter label
 - cut-paper lettering
 
-Typography is structure, not filler.
+Typography should act as a shape.
 
-No readable text means no invented headline, slogan, caption, or fake magazine copy.
+If user supplies text:
+- exact spelling
+- exact capitalization
+- one primary occurrence by default
 
-## Density by preset
+No text:
+- no visible words
+- no letters unless explicitly allowed
+
+No readable text:
+- abstract / cropped / damaged letterforms may appear
+- they must not resolve into a phrase
+
+## 12. Good chaos vs bad chaos
+
+Good chaos:
+- asymmetry
+- one clear focal person
+- one dominant movement
+- uneven but intentional red
+- cropped structure
+- purposeful overlap
+- multiple texture scales
+- negative space
+- one strong material collision
+
+Bad chaos:
+- every corner filled
+- repeated face wall
+- invented eyes / mouths / hands
+- random readable phrases
+- sticker spam
+- many equal red accents
+- texture everywhere
+- same template across a batch
+- style-reference person's features leaking into the result
+
+## 13. Preset density
 
 ### Clean
-- strong photo readability
-- one macro move
-- few micro marks
-- generous negative space
+- photo remains dominant
+- one strong Macro move
+- 1–2 Meso moves
+- sparse Micro texture
+- quiet negative space
 
 ### Editorial
-- one or two macro moves
-- two or three meso moves
-- visible but controlled print texture
-- clear photo/design balance
+- portrait and design feel balanced
+- one dominant Macro + optional counterweight
+- about 2 Meso moves
+- controlled xerox / halftone / tear language
+- clear background redesign
 
 ### Chaotic
-- stronger macro collision
-- higher meso density
+- stronger Macro collision
+- 2–3 Meso moves
 - more texture and type energy
-- still one dominant subject
-- still source-faithful
+- reduced but still intentional negative space
+- still one dominant portrait
+- still no stranger fragments
 
-## Thumbnail test
+## 14. Thumbnail test
 
-At small size, the image should read as:
+At small size the visual order should be:
 
 1. person
-2. one large graphic idea
-3. red / white / black relationship
-4. texture
+2. one large graphic structure
+3. black / oxblood / dirty-white balance
+4. torn / xerox material
+5. micro detail
 
-If the first read is tiny scratches, random symbols, or repeated faces, simplify.
+If scratches, icons, or tiny text read before the portrait, reduce detail.
+
+## 15. Series rhythm
+
+Across a batch, keep:
+- one red family
+- one paper family
+- one xerox character
+- one contrast philosophy
+
+Vary:
+- page density
+- tear direction
+- composition family
+- subject position
+- type use
+- fragment use
+- red location
+
+A good series alternates louder and quieter pages instead of making every page equally busy.
