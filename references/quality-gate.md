@@ -1,88 +1,149 @@
-# Quality Gate — Dark Collage Editor v2
+# Quality Gate — Dark Collage Editor v3
 
-Inspect every generated result before presenting it.
+Inspect every generated image before presenting it. The purpose is to catch identity drift, style-reference contamination, weak collage structure, and batch repetition.
 
-## Critical failures — regenerate once
+## A. Critical failures — regenerate once
 
-Regenerate if any of these occur:
-
-### Identity
-- face no longer looks like the supplied person
-- defining facial proportions changed
-- hairstyle changed materially
+### 1. Portrait fidelity
+Regenerate if:
+- the face no longer looks like the TARGET
+- facial proportions or defining features changed
+- hairstyle / hairline changed materially
 - expression changed without request
-- pose changed
-- hands were rebuilt incorrectly
-- clothing or jewelry changed
-- camera angle changed
-- horizontal / vertical orientation changed
+- pose or camera angle changed
+- hands or finger count were rebuilt incorrectly
+- clothes, jewelry, accessories, tattoos, piercings, or makeup changed
+- original horizontal / vertical orientation changed
 
-### Source authenticity
-- an added eye, mouth, face, hand, or portrait fragment cannot be verified as source-derived
-- an unrelated person appears
-- duplicated face spam appears
+### 2. Style-reference contamination
+Regenerate if any person-derived content from a STYLE_REFERENCE appears in the result:
+- another face
+- another eye
+- another hand
+- another hairstyle
+- another outfit
+- another body or pose
+- a portrait fragment that cannot be traced to the TARGET
 
-### Text
-When the user requested no readable text:
-- a readable slogan, headline, caption, fake magazine copy, or random sentence appears
+Style references may influence visual language only.
 
-When exact text was supplied:
-- spelling / capitalization is wrong
-- main phrase appears repeatedly without request
+### 3. Fragment authenticity
+Regenerate if:
+- an added portrait fragment is invented
+- a fragment comes from another batch photo without explicit permission
+- a fragment is source-ambiguous
+- face duplication becomes the main source of “chaos”
 
-### Composition
-- result is mostly source photo with a decorative border
-- torn paper exists only at the edges
-- Editorial / Chaotic leaves the original background visually dominant
+When uncertain, remove the fragment.
+
+### 4. Text
+If the user requested No text:
+- any readable word or visible letterform is a failure unless explicitly allowed later
+
+If the user requested No readable text:
+- a readable slogan, headline, caption, or phrase is a failure
+
+If exact text was supplied:
+- spelling, capitalization, wording, or repeated placement is wrong
+
+### 5. Composition
+Regenerate if:
+- result is mostly the original photo with an outer border
+- torn paper exists only around the perimeter
 - no large graphic structure enters the image interior
-- all visual elements have equal weight
-- collage hides the main person
-- red is sprayed evenly with no compositional function
+- Editorial / Chaotic leaves the original background visually dominant without a source-based reason
+- every element has equal visual weight
+- the collage hides the main person
+- red is scattered evenly without a compositional role
+- the result looks like stickers pasted around a photo rather than one integrated poster
 
-### Batch
-- same layout is copied across multiple images
-- same portrait fragment placement repeats mechanically
-- every image has the same red block and tear direction
-- series palette or material language drifts unintentionally
+### 6. Batch
+Regenerate the affected page if:
+- the same composition family repeats mechanically
+- tear direction, red block, fragment placement, and subject placement all repeat
+- the page is nearly a template duplicate
+- palette / paper / xerox language drifts unintentionally
+- the batch loses per-image orientation
 
-## Secondary failures — simplify or correct
+## B. Secondary failures — simplify before regenerating
 
+Correct or simplify if:
 - too many small marks
 - too many hardware motifs
-- too much halftone on the face
-- black crush removes clothing detail
+- too much halftone over the face
+- black crush destroys clothing detail
 - red contaminates skin
-- no negative space
-- macro structure too weak
-- typography too busy
-- torn-paper edge looks like a clean sticker outline
+- there is no quiet area
+- macro structure is too weak
+- typography is too busy
+- torn paper looks like a clean sticker outline
 - warm brown / sepia dominates unintentionally
+- the style reference is being copied too literally
+- the page contains more visual ideas than can be read at thumbnail size
 
-## Pass criteria
+## C. Four fast visual tests
 
-A successful result should satisfy most of these:
+### Thumbnail test
+At small size the image should read:
+1. person
+2. one large graphic idea
+3. black / oxblood / dirty-white relationship
+4. texture
+
+If tiny scratches or symbols read first, simplify.
+
+### Identity test
+Compare directly with the TARGET:
+- same face
+- same pose
+- same hands
+- same clothes
+- same jewelry
+- same orientation
+
+### Interior-collision test
+At least one major tear, type field, black/white block, halftone field, or red structure must participate inside the composition, not only around the border.
+
+### Reference-contamination test
+Mentally remove all style references. Every human feature in the result must still be explainable from the TARGET alone.
+
+## D. Pass criteria
+
+A strong result should satisfy all critical and most secondary criteria:
 
 - same person at first glance
 - same pose and orientation
-- face remains the clearest identity anchor
-- source background is meaningfully redesigned when appropriate
-- one clear macro composition is visible
-- black / deep red / dirty white relationship feels intentional
-- torn paper participates in the image interior
-- portrait fragments are sparse and source-authentic
-- texture supports rather than replaces composition
+- face remains the identity anchor
+- background is meaningfully redesigned when preset calls for it
+- one clear macro composition exists
+- black / oxblood / dirty-white relationship is intentional
+- torn paper participates in the interior
+- portrait fragments are sparse and same-target
+- red has a job
+- texture supports composition
 - no unwanted readable text
-- batch feels related but not templated
+- style reference affects language, not content
+- batch feels coherent but not templated
 
-## Recovery strategy
+## E. Recovery strategy
 
-If the first generation fails:
+If first generation fails:
 
-1. keep the original source image
-2. reduce collage density by one level
-3. simplify to one composition family
-4. remove optional portrait fragments
-5. restate face / hands / clothes / pose as locked
-6. regenerate once
+1. return to the original TARGET
+2. explicitly restate that all STYLE_REFERENCE people are forbidden content donors
+3. remove optional portrait fragments
+4. reduce density one level
+5. keep one composition family and one Macro move
+6. protect face / hands / clothes / jewelry / pose again
+7. regenerate once
 
-If identity still drifts, choose a simpler family such as Split Photography or Graphic Negative Space instead of forcing a stronger cutout transformation.
+If identity still drifts:
+- use Split Photography or Graphic Negative Space
+- keep more of the original portrait field intact
+- simplify graphic overlap
+- do not compensate by adding more generated detail
+
+If style is too weak but identity is correct:
+- strengthen the Macro field or tear
+- increase background replacement
+- do not increase Micro clutter first
